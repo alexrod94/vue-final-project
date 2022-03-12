@@ -4,11 +4,16 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #108775;
 }
 
 :root {
-    background: #F3FAFAFA;
-    font-size: 62.5%;
+  background: #f3fafafa;
+  font-size: 62.5%;
 }
 
 p {
@@ -25,7 +30,7 @@ h2 {
 }
 
 h3 {
-  font-size:  2.4rem;
+  font-size: 2.4rem;
 }
 
 h4 {
@@ -40,12 +45,62 @@ h6 {
   font-size: 1.8rem;
 }
 
-a {
-    text-decoration: none;
-    color: orange;
-    background: blue
+/* Utility classes */
+
+.card {
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
 }
 
-a:hover {
-    color: darkgoldenrod
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-input {
+  width: 80%;
+  padding: 10px;
+  border-radius: 30px;
+  border: 1px solid black;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.button-dark {
+  background-color: #333;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 30px;
+  border: 1px solid #333;
+}
+
+.button-dark:hover,
+.button-red:hover {
+  background-color: white;
+  color: black;
+}
+
+.button-red {
+  background-color: #8b0000;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 30px;
+  border: 1px solid #8b0000;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.white {
+  color: white;
 }

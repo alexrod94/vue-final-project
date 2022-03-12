@@ -1,47 +1,48 @@
 <template>
   <section class="app-container">
-    <AppHeader class="app-header" />
-    <Nav class="main-nav" />
-    <router-view class="app-main" />    
+    <h1 class="white" v-if="!user">Welcome to the Vue Task App</h1>
+    <AppHeader class="app-header" v-if="user" />
+    <Nav class="main-nav" v-if="user" />
+    <router-view class="app-main" />
   </section>
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
-import { storeToRefs } from 'pinia'
-import { useRouter } from 'vue-router'
-import { useUserStore } from './store/user.js'
+import { onMounted } from "vue";
+import { storeToRefs } from "pinia";
+import { useRouter } from "vue-router";
+import { useUserStore } from "./store/user.js";
 
-import AppHeader from "./components/AppHeader.vue"
-import Nav from "./components/Nav.vue"
+import AppHeader from "./components/AppHeader.vue";
+import Nav from "./components/Nav.vue";
 
-const router = useRouter()
+const router = useRouter();
 
-const userStore = useUserStore()
-const { user } = storeToRefs(userStore)
+const userStore = useUserStore();
+const { user } = storeToRefs(userStore);
 
 onMounted(async () => {
   try {
-    await userStore.fetchUser()
+    await userStore.fetchUser();
     if (!user.value) {
-      router.push({ path: '/auth' });
+      router.push({ path: "/auth" });
     } else {
-      router.push({ path: '/' });
+      router.push({ path: "/" });
     }
   } catch (e) {
-    console.log(e)
+    console.log(e);
   }
-})
+});
 </script>
 
 <style>
 .app-container {
-  display: grid;
-  grid-template-columns: 1fr 2fr 2fr 1fr;
-  grid-template-areas: 
-  "hd hd hd hd"
-  ". nav nav ."
-  ". main main .";
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+  justify-content: center;
+  height: 100vh;
 }
 
 .app-header {
@@ -56,5 +57,10 @@ onMounted(async () => {
 
 .main-nav {
   grid-area: nav;
+}
+
+h1 {
+  grid-area: welcome;
+  text-align: center;
 }
 </style>
